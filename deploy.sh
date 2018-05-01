@@ -14,4 +14,4 @@ mv out docs
 # Add changed docs, commit, and push to github
 git add docs
 git commit -m "Docs updated `date +\"%b %d, %Y\"`"
-git push
+git push origin master
