@@ -1,0 +1,9 @@
+{
+  "editor.tabSize": 2,
+  "editor.snippetSuggestions": "top",
+  "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "flow.pathToFlow": "${workspaceRoot}/node_modules/flow-bin/flow-osx-v0.64.0/flow"
+}

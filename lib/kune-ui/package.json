@@ -1,0 +1,8 @@
+{
+  "name": "kune-ui",
+  "version": "0.0.1",
+  "description": "The official UI framework for Kune's ecosystem of web and mobile apps, based on React.js, JSX and JSS",
+  "repository": "https://github.com/KunePay/kune-ui",
+  "author": "Jean M. Lescure",
+  "license": "MIT"
+}
