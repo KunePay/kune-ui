@@ -9,7 +9,11 @@ yarn build
 yarn export
 
 # Move exported HTML content to 'docs' directory
+rm -rf docs
 mv out docs
+
+# We use github pages, re-add CNAME file
+echo "kune-ui.org" > docs/CNAME
 
 # Add changed docs, commit, and push to github
 git add docs
