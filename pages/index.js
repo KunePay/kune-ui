@@ -1,9 +1,8 @@
 // @flow
 import React from 'react';
 
-// TODO: Solve building of `kune-ui` package
-import Heading from '../lib/kune-ui/Heading';
-import Paragraph from '../lib/kune-ui/Paragraph';
+import Heading from 'kune-ui/Heading';
+import Paragraph from 'kune-ui/Paragraph';
 
 export default () => (
   <div>
