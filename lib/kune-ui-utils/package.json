@@ -1,19 +1,20 @@
 {
-  "name": "kune-ui",
+  "name": "kune-ui-utils",
   "version": "0.0.1",
-  "description": "The official UI framework for Kune's ecosystem of web and mobile apps, based on React.js, JSX and JSS",
+  "description": "No-dependency utility functions organized by input type.",
   "repository": "https://github.com/KunePay/kune-ui",
   "author": "Jean M. Lescure",
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && babel src -d dist",
     "dev": "rimraf dist && babel src -d dist -w",
-    "setup:dev": "yarn build && cp package.json dist/package.json && cd dist && yarn link && cd ../../../ && yarn link kune-ui"
+    "setup:dev": "yarn build && cp package.json dist/package.json && cd dist && yarn link && yarn link:ui && yarn link:base",
+    "link:ui": "cd ../../kune-ui && yarn link kune-ui-utils",
+    "link:base": "cd ../../../ && yarn link kune-ui-utils"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.42",
     "@babel/preset-env": "7.0.0-beta.42",
-    "@babel/preset-react": "7.0.0-beta.42",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "flow-bin": "^0.71.0",
     "react": "^16.3.2",

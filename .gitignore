@@ -141,3 +141,4 @@ typings/
 ### Kune UI ###
 .next
 lib/kune-ui/dist
+lib/kune-ui-utils/dist
