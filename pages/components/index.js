@@ -6,8 +6,8 @@ import Paragraph from 'kune-ui-components/element-components/Paragraph';
 import Link from 'kune-ui-components/element-components/Link';
 
 export default () => (
-  <div>
-    <div>
+  <div className="row">
+    <div className="col-xs-12 col-sm-4 col-md-3 col-lg-2">
       <Heading level={2}>Table of Contents</Heading>
       <ul>
         <li><Link href="#text-classes">Text classes</Link></li>
@@ -16,7 +16,7 @@ export default () => (
         <li><Link href="#link">Link</Link></li>
       </ul>
     </div>
-    <div>
+    <div className="col-xs-12 col-sm-8 col-md-9 col-lg-10">
       <Heading>Documentation</Heading>
       <Heading level={2}>Kune UI Components</Heading>
       <div>
