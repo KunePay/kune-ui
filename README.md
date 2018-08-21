@@ -67,7 +67,8 @@ To begin development simply clone this repository, navigate to the directory's r
 
 ```
 $ npm install -g yarn
-$ yarn install
+$ yarn
+$ yarn setup:dev
 $ yarn dev
 ```
 
