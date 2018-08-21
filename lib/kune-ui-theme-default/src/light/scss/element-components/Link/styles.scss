@@ -11,5 +11,6 @@
 
   &[disabled] {
     color: $disabled-link-text-color;
+    text-decoration: none;
   }
 }

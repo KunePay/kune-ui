@@ -6,8 +6,8 @@ $heading-font: Helvetica, sans-serif;
 $sub-heading-font: Helvetica, sans-serif;
 
 /* Theme Colors */
-$primary-background-color: $grey-100;
-$secondary-background-color: $white;
+$primary-background-color: $white;
+$secondary-background-color: $blue-grey-50;
 $disabled-background-color: $grey-300;
 
 $primary-text-color: $grey-900;
@@ -16,7 +16,7 @@ $disabled-text-color: $grey-500;
 
 $link-background-color: transparent;
 $link-text-color: $blue-500;
-$disabled-link-text-color: $blue-300;
+$disabled-link-text-color: $blue-grey-300;
 
 $highlight-background-color: #bada55;
 $disabled-highlight-background-color: #bada55;
@@ -28,17 +28,22 @@ $disabled-info-background-color: #bada55;
 $info-text-color: #bada55;
 $disabled-info-text-color: #bada55;
 
-$success-background-color: #bada55;
-$disabled-success-background-color: #bada55;
-$success-text-color: #bada55;
-$disabled-success-text-color: #bada55;
-
 $warning-background-color: #bada55;
 $disabled-warning-background-color: #bada55;
 $warning-text-color: #bada55;
 $disabled-warning-text-color: #bada55;
 
+$alert-background-color: #bada55;
+$disabled-alert-background-color: #bada55;
+$alert-text-color: #bada55;
+$disabled-alert-text-color: #bada55;
+
 $error-background-color: #bada55;
 $disabled-error-background-color: #bada55;
 $error-text-color: #bada55;
 $disabled-error-text-color: #bada55;
+
+$success-background-color: #bada55;
+$disabled-success-background-color: #bada55;
+$success-text-color: #bada55;
+$disabled-success-text-color: #bada55;
