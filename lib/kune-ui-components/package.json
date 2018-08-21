@@ -1,0 +1,26 @@
+{
+  "name": "kune-ui-components",
+  "version": "0.0.1",
+  "description": "Collection of UI Components for Kune UI",
+  "repository": "https://github.com/KunePay/kune-ui",
+  "author": "Jean M. Lescure",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && babel src -d dist",
+    "dev": "rimraf dist && babel src -d dist -w",
+    "setup:dev": "yarn && yarn link:utils && yarn link:hocs && yarn build && cp package.json dist/package.json && cd dist && yarn link && cd ../../../ && yarn link kune-ui-components",
+    "link:utils": "cd ../kune-ui-utils && yarn setup:dev && cd ../kune-ui-components && yarn link kune-ui-utils",
+    "link:hocs": "cd ../kune-ui-hocs && yarn setup:dev && cd ../kune-ui-components && yarn link kune-ui-hocs"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.0.0-beta.42",
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/preset-env": "7.0.0-beta.42",
+    "@babel/preset-react": "7.0.0-beta.42",
+    "babel-plugin-transform-flow-strip-types": "6.22.0",
+    "flow-bin": "0.79.1",
+    "react": "16.4.0",
+    "react-dom": "16.4.0",
+    "rimraf": "2.6.2"
+  }
+}
