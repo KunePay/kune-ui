@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
 
-import Heading from 'kune-ui/Heading';
-import Paragraph from 'kune-ui/Paragraph';
-import Link from 'kune-ui/Link';
+import Heading from 'kune-ui-components/element-components/Heading';
+import Paragraph from 'kune-ui-components/element-components/Paragraph';
+import Link from 'kune-ui-components/element-components/Link';
 
 export default () => (
   <div>

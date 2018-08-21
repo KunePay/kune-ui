@@ -1,0 +1,15 @@
+@import '../../variables';
+
+.heading-1 {
+  color: $primary-text-color;
+  font-family: $heading-font;
+}
+
+.heading-2,
+.heading-3,
+.heading-4,
+.heading-5,
+.heading-6 {
+  color: $secondary-text-color;
+  font-family: $heading-font;
+}

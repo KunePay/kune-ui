@@ -1,8 +1,9 @@
 // @flow
 import React from 'react';
 
-import Heading from 'kune-ui/Heading';
-import Paragraph from 'kune-ui/Paragraph';
+import Heading from 'kune-ui-components/element-components/Heading';
+import Paragraph from 'kune-ui-components/element-components/Paragraph';
+import Link from 'kune-ui-components/element-components/Link';
 
 export default () => (
   <div>
@@ -22,6 +23,6 @@ export default () => (
 
     <Paragraph>This means, in comparison to other contemporary React UI Frameworks, Kune UI is very stable, easy to implement, and makes React apps that use it better maintainable in the long-run.</Paragraph>
 
-    <Paragraph>For more info take a look at <a href="https://github.com/KunePay/kune-ui">Kune UI on Github</a></Paragraph>
+    <Paragraph>For more info take a look at <Link href="https://github.com/KunePay/kune-ui">Kune UI on Github</Link></Paragraph>
   </div>
 );

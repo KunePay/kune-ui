@@ -1,0 +1,23 @@
+{
+  "name": "kune-ui-theme-default",
+  "version": "0.0.1",
+  "description": "Default styled-jsx compatible theme package for Kune UI",
+  "main": "index.js",
+  "repository": "https://github.com/KunePay/kune-ui",
+  "author": "Jean M. Lescure",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && node build.js",
+    "dev": "rimraf dist && node build.js -w",
+    "setup:dev": "yarn && yarn build && cp package.json dist/package.json && cd dist && yarn link && cd ../../../ && yarn link kune-ui-theme-default"
+  },
+  "devDependencies": {
+    "chokidar": "2.0.4",
+    "clean-css": "4.2.1",
+    "dot-object": "1.7.0",
+    "fs-extra": "7.0.0",
+    "glob": "7.1.2",
+    "node-sass": "4.9.3",
+    "rimraf": "2.6.2"
+  }
+}
