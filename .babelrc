@@ -1,6 +1,13 @@
 {
   "presets": [
-    "next/babel"
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "useBuiltIns": "usage"
+        }
+      }
+    ]
   ],
   "plugins": [
     "transform-flow-strip-types"
