@@ -1,7 +1,7 @@
 @import '../../variables';
 
 .link {
-  color: $link-text-color;
+  color: $link-foreground-color;
   background: $link-background-color;
   text-decoration: none;
 
@@ -10,7 +10,7 @@
   }
 
   &[disabled] {
-    color: $disabled-link-text-color;
+    color: $disabled-link-foreground-color;
     text-decoration: none;
   }
 }

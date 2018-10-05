@@ -1,7 +1,7 @@
 @import '../../variables';
 
 .heading-1 {
-  color: $primary-text-color;
+  color: $primary-foreground-color;
   font-family: $heading-font;
 }
 
@@ -10,6 +10,6 @@
 .heading-4,
 .heading-5,
 .heading-6 {
-  color: $secondary-text-color;
+  color: $secondary-foreground-color;
   font-family: $heading-font;
 }

@@ -2,6 +2,132 @@
 
 body {
   font-family: $body-font;
-  color: $primary-text-color;
+  color: $primary-foreground-color;
   background: $secondary-background-color;
+}
+
+.highlight-background {
+  background: $highlight-background-color;
+}
+.highlight-text {
+  color: $highlight-background-color;
+}
+.disabled.highlight-background {
+  background: $disabled-highlight-background-color;
+}
+.disabled.highlight-text {
+  color: $disabled-highlight-background-color;
+}
+.highlight {
+  background: $highlight-background-color;
+  color: $highlight-foreground-color;
+}
+.disabled.highlight {
+  background: $disabled-highlight-background-color;
+  color: $disabled-highlight-foreground-color;
+}
+
+.info-background {
+  background: $info-background-color;
+}
+.info-text {
+  color: $info-background-color;
+}
+.disabled.info-background {
+  background: $disabled-info-background-color;
+}
+.disabled.info-text {
+  color: $disabled-info-background-color;
+}
+.info {
+  background: $info-background-color;
+  color: $info-foreground-color;
+}
+.disabled.info {
+  background: $disabled-info-background-color;
+  color: $disabled-info-foreground-color;
+}
+
+.warning-background {
+  background: $warning-background-color;
+}
+.warning-text {
+  color: $warning-background-color;
+}
+.disabled.warning-background {
+  background: $disabled-warning-background-color;
+}
+.disabled.warning-text {
+  color: $disabled-warning-background-color;
+}
+.warning {
+  background: $warning-background-color;
+  color: $warning-foreground-color;
+}
+.disabled.warning {
+  background: $disabled-warning-background-color;
+  color: $disabled-warning-foreground-color;
+}
+
+.alert-background {
+  background: $alert-background-color;
+}
+.alert-text {
+  color: $alert-background-color;
+}
+.disabled.alert-background {
+  background: $disabled-alert-background-color;
+}
+.disabled.alert-text {
+  color: $disabled-alert-background-color;
+}
+.alert {
+  background: $alert-background-color;
+  color: $alert-foreground-color;
+}
+.disabled.alert {
+  background: $disabled-alert-background-color;
+  color: $disabled-alert-foreground-color;
+}
+
+.error-background {
+  background: $error-background-color;
+}
+.error-text {
+  color: $error-background-color;
+}
+.disabled.error-background {
+  background: $disabled-error-background-color;
+}
+.disabled.error-text {
+  color: $disabled-error-background-color;
+}
+.error {
+  background: $error-background-color;
+  color: $error-foreground-color;
+}
+.disabled.error {
+  background: $disabled-error-background-color;
+  color: $disabled-error-foreground-color;
+}
+
+.success-background {
+  background: $success-background-color;
+}
+.success-text {
+  color: $success-background-color;
+}
+.disabled.success-background {
+  background: $disabled-success-background-color;
+}
+.disabled.success-text {
+  color: $disabled-success-background-color;
+}
+.success {
+  background: $success-background-color;
+  color: $success-foreground-color;
+}
+.disabled.success {
+  background: $disabled-success-background-color;
+  color: $disabled-success-foreground-color;
 }
