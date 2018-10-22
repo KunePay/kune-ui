@@ -26,15 +26,35 @@ class ComponentsPage extends Component<Props, State> {
     successCodeOpen: false,
   };
 
+  codeBoxIsOpen = (identifier: string):boolean => {
+    return this.state[`${identifier}CodeOpen`];
+  }
+
+  codeBoxProps = (identifier: string):any => {
+    const result = this.codeBoxIsOpen(identifier)?
+      {
+        style: {
+          overflow: 'auto',
+        },
+      } : {
+        className: 'collapsed-vertical',
+      };
+
+    return result;
+  }
+
+  codeLinkClickHandler = (identifier: string) => {
+    this.setState({
+      [`${identifier}CodeOpen`]: !this.codeBoxIsOpen(identifier),
+    });
+  }
+
   render () {
     const {
-      highlightCodeOpen,
-      infoCodeOpen,
-      warningCodeOpen,
-      alertCodeOpen,
-      errorCodeOpen,
-      successCodeOpen,
-    } = this.state;
+      codeBoxProps,
+      codeLinkClickHandler,
+      codeBoxIsOpen,
+    } = this;
 
     return (
       <div className="row">
@@ -58,73 +78,73 @@ class ComponentsPage extends Component<Props, State> {
             <Paragraph className="highlight-text">
               <span className="highlight-background">&nbsp;</span> Highlights are used to bring attention to features.
             </Paragraph>
-            <Paragraph collapsedVertical={!highlightCodeOpen} style={{overflow: 'auto'}}><pre>
+            <div {...codeBoxProps('highlight')}><pre>
 {`<Heading level={4} className="highlight">.highlight</Heading>
 <Paragraph className="highlight-text">
   <span className="highlight-background">&nbsp;</span> Highlights are used to bring attention to features.
 </Paragraph>`}
-            </pre></Paragraph>
-            <Link onClick={(e) => {e.preventDefault(); this.setState({highlightCodeOpen: !highlightCodeOpen})}}>{(highlightCodeOpen)? 'Hide Code' : 'Show Code'}</Link>
+            </pre></div>
+            <Link onClick={(e) => {e.preventDefault(); codeLinkClickHandler('highlight')}}>{(codeBoxIsOpen('highlight'))? 'Hide Code' : 'Show Code'}</Link>
 
             <Heading level={4} className="info">.info</Heading>
             <Paragraph className="info-text">
             <span className="info-background">&nbsp;</span> Info shows relevant answers to questions a user may have.
             </Paragraph>
-            <Paragraph collapsedVertical={!infoCodeOpen} style={{overflow: 'auto'}}><pre>
+            <div {...codeBoxProps('info')}><pre>
 {`<Heading level={4} className="info">.info</Heading>
 <Paragraph className="info-text">
   <span className="info-background">&nbsp;</span> Info shows relevant answers to questions a user may have.
 </Paragraph>`}
-            </pre></Paragraph>
-            <Link onClick={(e) => {e.preventDefault(); this.setState({infoCodeOpen: !infoCodeOpen})}}>{(infoCodeOpen)? 'Hide Code' : 'Show Code'}</Link>
+            </pre></div>
+            <Link onClick={(e) => {e.preventDefault(); codeLinkClickHandler('info')}}>{(codeBoxIsOpen('info'))? 'Hide Code' : 'Show Code'}</Link>
 
             <Heading level={4} className="warning">.warning</Heading>
             <Paragraph className="warning-text">
               <span className="warning-background">&nbsp;</span> Warning tells a user that something might go wrong if they continue without verifying.
             </Paragraph>
-            <Paragraph collapsedVertical={!warningCodeOpen} style={{overflow: 'auto'}}><pre>
+            <div {...codeBoxProps('warning')}><pre>
 {`<Heading level={4} className="warning">.warning</Heading>
 <Paragraph className="warning-text">
   <span className="warning-background">&nbsp;</span> Warning tells a user that something might go wrong if they continue without verifying.
 </Paragraph>`}
-            </pre></Paragraph>
-            <Link onClick={(e) => {e.preventDefault(); this.setState({warningCodeOpen: !warningCodeOpen})}}>{(warningCodeOpen)? 'Hide Code' : 'Show Code'}</Link>
+            </pre></div>
+            <Link onClick={(e) => {e.preventDefault(); codeLinkClickHandler('warning')}}>{(codeBoxIsOpen('warning'))? 'Hide Code' : 'Show Code'}</Link>
 
             <Heading level={4} className="alert">.alert</Heading>
             <Paragraph className="alert-text">
               <span className="alert-background">&nbsp;</span> Alert tells the user to take action before something goes wrong.
             </Paragraph>
-            <Paragraph collapsedVertical={!alertCodeOpen} style={{overflow: 'auto'}}><pre>
+            <div {...codeBoxProps('alert')}><pre>
 {`<Heading level={4} className="alert">.alert</Heading>
 <Paragraph className="alert-text">
   <span className="alert-background">&nbsp;</span> Alert tells the user to take action before something goes wrong.
 </Paragraph>`}
-            </pre></Paragraph>
-            <Link onClick={(e) => {e.preventDefault(); this.setState({alertCodeOpen: !alertCodeOpen})}}>{(alertCodeOpen)? 'Hide Code' : 'Show Code'}</Link>
+            </pre></div>
+            <Link onClick={(e) => {e.preventDefault(); codeLinkClickHandler('alert')}}>{(codeBoxIsOpen('alert'))? 'Hide Code' : 'Show Code'}</Link>
 
             <Heading level={4} className="error">.error</Heading>
             <Paragraph className="error-text">
               <span className="error-background">&nbsp;</span> Error lets the user know that something has gone wrong.
             </Paragraph>
-            <Paragraph collapsedVertical={!errorCodeOpen} style={{overflow: 'auto'}}><pre>
+            <div {...codeBoxProps('error')}><pre>
 {`<Heading level={4} className="error">.error</Heading>
 <Paragraph className="error-text">
   <span className="error-background">&nbsp;</span> Error lets the user know that something has gone wrong.
 </Paragraph>`}
-            </pre></Paragraph>
-            <Link onClick={(e) => {e.preventDefault(); this.setState({errorCodeOpen: !errorCodeOpen})}}>{(errorCodeOpen)? 'Hide Code' : 'Show Code'}</Link>
+            </pre></div>
+            <Link onClick={(e) => {e.preventDefault(); codeLinkClickHandler('error')}}>{(codeBoxIsOpen('error'))? 'Hide Code' : 'Show Code'}</Link>
 
             <Heading level={4} className="success">.success</Heading>
             <Paragraph className="success-text">
               <span className="success-background">&nbsp;</span> Success lets the user know that something has succeeded.
             </Paragraph>
-            <Paragraph collapsedVertical={!successCodeOpen} style={{overflow: 'auto'}}><pre>
+            <div {...codeBoxProps('success')}><pre>
 {`<Heading level={4} className="success">.success</Heading>
 <Paragraph className="success-text">
   <span className="success-background">&nbsp;</span> Success lets the user know that something has succeeded.
 </Paragraph>`}
-            </pre></Paragraph>
-            <Link onClick={(e) => {e.preventDefault(); this.setState({successCodeOpen: !successCodeOpen})}}>{(successCodeOpen)? 'Hide Code' : 'Show Code'}</Link>
+            </pre></div>
+            <Link onClick={(e) => {e.preventDefault(); codeLinkClickHandler('success')}}>{(codeBoxIsOpen('success'))? 'Hide Code' : 'Show Code'}</Link>
           </div>
           <div>
             <Heading level={3}>Heading</Heading>
