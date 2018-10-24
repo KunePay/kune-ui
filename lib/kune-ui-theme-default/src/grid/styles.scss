@@ -264,6 +264,14 @@ $lg-viewport: only screen and (min-width: 75em);
   margin-bottom: 0 !important;
 }
 
+// Used to allow PrismCode component to properly adjust
+// to the grid's responsiveness.
+.code-box,
+pre.code-box,
+pre[class*="language-"].code-box {
+  overflow: auto;
+}
+
 @media #{$sm-viewport} {
   .container {
     width: var($container-sm, 46rem);
