@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 
 require('prismjs');
 require('prismjs/components/prism-jsx');
-require('prismjs/themes/prism-coy.css');
+require('prism-themes/themes/prism-base16-ateliersulphurpool.light.css');
 
 import {PrismCode} from 'react-prism';
 

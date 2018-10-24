@@ -17,6 +17,7 @@
     "express": "4.16.3",
     "flow-bin": "0.79.1",
     "next": "7.0.2",
+    "prism-themes": "1.0.1",
     "prismjs": "1.15.0",
     "react": "16.4.0",
     "react-dom": "16.4.0",
