@@ -1,6 +1,12 @@
 // @flow
 import React, {Component} from 'react';
 
+require('prismjs');
+require('prismjs/components/prism-jsx');
+require('prismjs/themes/prism-okaidia.css');
+
+import {PrismCode} from 'react-prism';
+
 import Heading from 'kune-ui-components/element-components/Heading';
 import Paragraph from 'kune-ui-components/element-components/Paragraph';
 import Link from 'kune-ui-components/element-components/Link';
@@ -78,72 +84,84 @@ class ComponentsPage extends Component<Props, State> {
             <Paragraph className="highlight-text">
               <span className="highlight-background">&nbsp;</span> Highlights are used to bring attention to features.
             </Paragraph>
-            <div {...codeBoxProps('highlight')}><pre>
+            <div {...codeBoxProps('highlight')}>
+              <PrismCode component="pre" className="language-jsx">
 {`<Heading level={4} className="highlight">.highlight</Heading>
 <Paragraph className="highlight-text">
   <span className="highlight-background">&nbsp;</span> Highlights are used to bring attention to features.
 </Paragraph>`}
-            </pre></div>
+              </PrismCode>
+            </div>
             <Link onClick={(e) => {e.preventDefault(); codeLinkClickHandler('highlight')}}>{(codeBoxIsOpen('highlight'))? 'Hide Code' : 'Show Code'}</Link>
 
             <Heading level={4} className="info">.info</Heading>
             <Paragraph className="info-text">
             <span className="info-background">&nbsp;</span> Info shows relevant answers to questions a user may have.
             </Paragraph>
-            <div {...codeBoxProps('info')}><pre>
+            <div {...codeBoxProps('info')}>
+              <PrismCode component="pre" className="language-jsx">
 {`<Heading level={4} className="info">.info</Heading>
 <Paragraph className="info-text">
   <span className="info-background">&nbsp;</span> Info shows relevant answers to questions a user may have.
 </Paragraph>`}
-            </pre></div>
+              </PrismCode>
+            </div>
             <Link onClick={(e) => {e.preventDefault(); codeLinkClickHandler('info')}}>{(codeBoxIsOpen('info'))? 'Hide Code' : 'Show Code'}</Link>
 
             <Heading level={4} className="warning">.warning</Heading>
             <Paragraph className="warning-text">
               <span className="warning-background">&nbsp;</span> Warning tells a user that something might go wrong if they continue without verifying.
             </Paragraph>
-            <div {...codeBoxProps('warning')}><pre>
+            <div {...codeBoxProps('warning')}>
+              <PrismCode component="pre" className="language-jsx">
 {`<Heading level={4} className="warning">.warning</Heading>
 <Paragraph className="warning-text">
   <span className="warning-background">&nbsp;</span> Warning tells a user that something might go wrong if they continue without verifying.
 </Paragraph>`}
-            </pre></div>
+              </PrismCode>
+            </div>
             <Link onClick={(e) => {e.preventDefault(); codeLinkClickHandler('warning')}}>{(codeBoxIsOpen('warning'))? 'Hide Code' : 'Show Code'}</Link>
 
             <Heading level={4} className="alert">.alert</Heading>
             <Paragraph className="alert-text">
               <span className="alert-background">&nbsp;</span> Alert tells the user to take action before something goes wrong.
             </Paragraph>
-            <div {...codeBoxProps('alert')}><pre>
+            <div {...codeBoxProps('alert')}>
+              <PrismCode component="pre" className="language-jsx">
 {`<Heading level={4} className="alert">.alert</Heading>
 <Paragraph className="alert-text">
   <span className="alert-background">&nbsp;</span> Alert tells the user to take action before something goes wrong.
 </Paragraph>`}
-            </pre></div>
+              </PrismCode>
+            </div>
             <Link onClick={(e) => {e.preventDefault(); codeLinkClickHandler('alert')}}>{(codeBoxIsOpen('alert'))? 'Hide Code' : 'Show Code'}</Link>
 
             <Heading level={4} className="error">.error</Heading>
             <Paragraph className="error-text">
               <span className="error-background">&nbsp;</span> Error lets the user know that something has gone wrong.
             </Paragraph>
-            <div {...codeBoxProps('error')}><pre>
+            <div {...codeBoxProps('error')}>
+              <PrismCode component="pre" className="language-jsx">
 {`<Heading level={4} className="error">.error</Heading>
 <Paragraph className="error-text">
   <span className="error-background">&nbsp;</span> Error lets the user know that something has gone wrong.
 </Paragraph>`}
-            </pre></div>
+              </PrismCode>
+            </div>
             <Link onClick={(e) => {e.preventDefault(); codeLinkClickHandler('error')}}>{(codeBoxIsOpen('error'))? 'Hide Code' : 'Show Code'}</Link>
 
             <Heading level={4} className="success">.success</Heading>
             <Paragraph className="success-text">
               <span className="success-background">&nbsp;</span> Success lets the user know that something has succeeded.
             </Paragraph>
-            <div {...codeBoxProps('success')}><pre>
+            <div {...codeBoxProps('success')}>
+              <PrismCode component="pre" className="language-jsx">
 {`<Heading level={4} className="success">.success</Heading>
 <Paragraph className="success-text">
   <span className="success-background">&nbsp;</span> Success lets the user know that something has succeeded.
 </Paragraph>`}
-            </pre></div>
+              </PrismCode>
+            </div>
             <Link onClick={(e) => {e.preventDefault(); codeLinkClickHandler('success')}}>{(codeBoxIsOpen('success'))? 'Hide Code' : 'Show Code'}</Link>
           </div>
           <div>
