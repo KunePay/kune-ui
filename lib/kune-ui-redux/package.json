@@ -12,9 +12,9 @@
     "setup:dev": "yarn && yarn build && cp package.json dist/package.json && cd dist && yarn link && cd ../../../ && yarn link kune-ui-redux"
   },
   "devDependencies": {
-    "@babel/cli": "7.0.0-beta.42",
-    "@babel/core": "^7.0.0-beta.42",
-    "@babel/preset-env": "7.0.0-beta.42",
+    "@babel/cli": "7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "7.0.0",
     "babel-plugin-transform-flow-strip-types": "6.22.0",
     "babel-runtime": "6.26.0",
     "flow-bin": "0.79.1",

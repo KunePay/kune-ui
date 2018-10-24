@@ -13,10 +13,10 @@
     "link:hocs": "cd ../kune-ui-hocs && yarn setup:dev && cd ../kune-ui-components && yarn link kune-ui-hocs"
   },
   "devDependencies": {
-    "@babel/cli": "7.0.0-beta.42",
-    "@babel/core": "^7.0.0-beta.42",
-    "@babel/preset-env": "7.0.0-beta.42",
-    "@babel/preset-react": "7.0.0-beta.42",
+    "@babel/cli": "7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "7.0.0",
+    "@babel/preset-react": "7.0.0",
     "babel-plugin-transform-flow-strip-types": "6.22.0",
     "classnames": "2.2.6",
     "flow-bin": "0.79.1",
