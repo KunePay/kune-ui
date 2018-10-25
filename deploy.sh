@@ -14,7 +14,7 @@ rm -rf out/_next
 npm install -g renamer
 renamer --find "/_/g" --replace "" "out/**"
 renamer --find "/~/g" --replace "" "out/**"
-for i in {1..30}; do sh -c "find out -name '*.html' -exec sed -i.bk -e 's/_next\///g;s/\(\"\/static\/[^~]*\)~\([^~]*\"\)/\1\2/g;s/\(\"\/static\/[^_]*\)_\([^_]*\"\)/\1\2/g' {} \; && rm out/*.bk && rm out/**/*.bk"; done
+for i in {1..30}; do sh -c "find out -name '*.html' -exec sed -i.bk -e 's/_next\///g;s/\(\"\/static\/[^\~]*\)\~\([^\"\~]*\"\)/\1\2/g;s/\(\"\/static\/[^_]*\)_\([^_\"]*\"\)/\1\2/g' {} \; && rm out/*.bk && rm out/**/*.bk"; done
 
 # Move exported HTML content to 'docs' directory
 rm -rf docs
