@@ -6,6 +6,7 @@ require('prismjs/components/prism-jsx');
 require('prism-themes/themes/prism-base16-ateliersulphurpool.light.css');
 
 import {PrismCode} from 'react-prism';
+import axios from 'axios';
 
 import Heading from 'kune-ui-components/element-components/Heading';
 import Paragraph from 'kune-ui-components/element-components/Paragraph';
@@ -30,6 +31,12 @@ class ComponentsPage extends Component<Props, State> {
     alertCodeOpen: false,
     errorCodeOpen: false,
     successCodeOpen: false,
+    basicAsyncExampleRequested: false,
+    markupAsyncExampleRequested: false,
+    transformationAsyncExampleRequested: false,
+    preChildrenAsyncExampleRequested: false,
+    ajaxAsyncExampleRequested: false,
+    errorAsyncExampleRequested: false,
   };
 
   codeBoxIsOpen = (identifier: string):boolean => {
@@ -53,11 +60,24 @@ class ComponentsPage extends Component<Props, State> {
     });
   }
 
+  checkAsyncExampleRequested = (identifier: string):boolean => {
+    return this.state[`${identifier}AsyncExampleRequested`];
+  }
+
+  asyncExampleLoadClickHandler = (identifier: string) => {
+    this.setState({
+      [`${identifier}AsyncExampleRequested`]: false,
+    }, () => setTimeout(() => this.setState({
+      [`${identifier}AsyncExampleRequested`]: true,
+    }), 500));
+  }
+
   render () {
     const {
       codeBoxProps,
       codeLinkClickHandler,
       codeBoxIsOpen,
+      checkAsyncExampleRequested,
     } = this;
 
     return (
@@ -69,7 +89,7 @@ class ComponentsPage extends Component<Props, State> {
           <ul>
             <li>
               <Link href="#color-palette">
-                Color Palette
+                Color palette
               </Link>
             </li>
             <li>
@@ -101,6 +121,11 @@ class ComponentsPage extends Component<Props, State> {
                 </li>
               </ul>
             </li>
+            <li>
+              <Link href="#loading-content-asynchronously">
+                Loading content asynchronously
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="col-xs-12 col-sm-8 col-md-9 col-lg-10">
@@ -109,7 +134,7 @@ class ComponentsPage extends Component<Props, State> {
           </Heading>
           <div>
             <Heading level={2}>
-              Color Palette
+              Color palette
             </Heading>
             <div>
               <Heading level={3}>
@@ -277,6 +302,186 @@ class ComponentsPage extends Component<Props, State> {
               <div>
                 <Heading level={3}>Link</Heading>
                 <Paragraph>Description of this once it is implemented</Paragraph>
+              </div>
+              <div>
+                <Heading level={3}>Loading content asynchronously</Heading>
+                <Paragraph>You can use the <PrismCode>contentPromise</PrismCode> prop to load content asynchronously as per the following example:</Paragraph>
+                <Heading level={4}>Basic async content</Heading>
+                <Paragraph>The only requirement to turn a Kune UI component into an async component is to pass a <PrismCode>Promise</PrismCode> object to the <PrismCode>contentPromise</PrismCode> prop:</Paragraph>
+                <button onClick={() => this.asyncExampleLoadClickHandler('basic')}>Click here to run example</button>
+                {
+                  checkAsyncExampleRequested('basic')?
+                  (<Paragraph
+                    contentPromise={
+                      new Promise((r: any) => setTimeout(() => r('This content took 3 seconds to show up.'), 3000))
+                    }
+                  />)
+                  :
+                  null
+                }
+                <PrismCode component="pre" className="language-jsx">
+{`<Paragraph
+  contentPromise={
+    new Promise((r: any) => setTimeout(() => r('This content took 3 seconds to show up.'), 3000))
+  }
+/>`}
+                </PrismCode>
+                <Heading level={4}>Async content with markup</Heading>
+                <Paragraph>You can return more than just strings from a content promise, such as HTML or even JSX markup. Basically any content compatible with React's <PrismCode>children</PrismCode> prop will work just fine:</Paragraph>
+                <button onClick={() => this.asyncExampleLoadClickHandler('markup')}>Click here to run example</button>
+                {
+                  checkAsyncExampleRequested('markup')?
+                  (<Paragraph
+                    contentPromise={
+                      new Promise((r: any) => setTimeout(() => {
+                        r(
+                          <span><strong>This content</strong> took 3 seconds to show up.</span>
+                        )
+                      }, 3000))
+                    }
+                  />)
+                  :
+                  null
+                }
+                <PrismCode component="pre" className="language-jsx">
+{`<Paragraph
+  contentPromise={
+    new Promise((r: any) => setTimeout(() => {
+      r(
+        <span><strong>This content</strong> took 3 seconds to show up.</span>
+      )
+    }, 3000))
+  }
+/>`}
+                </PrismCode>
+                <Heading level={4}>Async content transformation</Heading>
+                <Paragraph>Sometimes the content returned by a promise may not be in the desired format for your view. In such cases you can take leverage of the <PrismCode>onContentLoaded</PrismCode> prop to simply pass a function which transforms the data returned by the content promise:</Paragraph>
+                <button onClick={() => this.asyncExampleLoadClickHandler('transformation')}>Click here to run example</button>
+                {
+                  checkAsyncExampleRequested('transformation')?
+                  (<Paragraph
+                    contentPromise={
+                      new Promise((r: any) => setTimeout(() => r('This content'), 3000))
+                    }
+                    onContentLoaded={
+                      (content: string) => `${content.split(' ').join(' other ')} took 3 seconds to show up.`
+                    }
+                  />)
+                  :
+                  null
+                }
+                <PrismCode component="pre" className="language-jsx">
+{`<Paragraph
+  contentPromise={
+    new Promise((r: any) => setTimeout(() => r('This content'), 3000))
+  }
+  onContentLoaded={
+    (content: string) => \`\${content.split(' ').join(' other ')} took 3 seconds to show up.\`
+  }
+/>`}
+                </PrismCode>
+                <Heading level={4}>Loading content message</Heading>
+                <Paragraph>While content is being loaded a "Loading..." string is displayed. You can override this message by simply putting static content as child of the asynchronous component. The content placed as children of the asynchronous component will be replaced by the asynchronous content once loaded:</Paragraph>
+                <button onClick={() => this.asyncExampleLoadClickHandler('preChildren')}>Click here to run example</button>
+                {
+                  checkAsyncExampleRequested('preChildren')?
+                  (<Paragraph
+                    contentPromise={
+                      new Promise((r: any) => setTimeout(() => r('This content took 3 seconds to show up.'), 3000))
+                    }
+                  >
+                    Content will show up here in 3 seconds ⏲...
+                  </Paragraph>)
+                  :
+                  null
+                }
+                <PrismCode component="pre" className="language-jsx">
+{`<Paragraph
+  contentPromise={
+    new Promise((r: any) => setTimeout(() => r('This content took 3 seconds to show up.'), 3000))
+  }
+>
+  Content will show up here in 3 seconds ⏲...
+</Paragraph>`}
+                </PrismCode>
+                <Heading level={4}>Ajax content</Heading>
+                <Paragraph>Most use cases of asynchronous contents will involve ajax. Here's an example of loading and transforming JSON data using axios:</Paragraph>
+                <button onClick={() => this.asyncExampleLoadClickHandler('ajax')}>Click here to run example</button>
+                {
+                  checkAsyncExampleRequested('ajax')?
+                  (<Paragraph
+                    contentPromise={
+                      axios.get('https://jsonplaceholder.typicode.com/users')
+                    }
+                    onContentLoaded={
+                      (res: any) => {
+                        const names: string = res.data.map((p: any) => p.name).join(', ');
+                        return (
+                          <span>
+                            The following content was loaded from <Link href="https://jsonplaceholder.typicode.com/users" target="_blank">https://jsonplaceholder.typicode.com/users</Link> and concatenated into the following string:
+                            <br/>
+                            <br/>
+                            {names}
+                          </span>
+                        );
+                      }
+                    }
+                  />)
+                  :
+                  null
+                }
+                <PrismCode component="pre" className="language-jsx">
+{`<Paragraph
+  contentPromise={
+    axios.get('https://jsonplaceholder.typicode.com/users')
+  }
+  onContentLoaded={
+    (res: any) => {
+      const names: string = res.data.map((p: any) => p.name).join(', ');
+      return (
+        <span>
+          The following content was loaded from <Link href="https://jsonplaceholder.typicode.com/users" target="_blank">https://jsonplaceholder.typicode.com/users</Link> and concatenated into the following string:
+          <br/>
+          <br/>
+          {names}
+        </span>
+      );
+    }
+  }
+/>`}
+                </PrismCode>
+                <Heading level={4}>Handling async content errors</Heading>
+                <Paragraph>Things don't always go as planned. For such instances a default "There was an error loading the async content." message is displayed which can be overriden by the <PrismCode>onContentLoadError</PrismCode> prop:</Paragraph>
+                <button onClick={() => this.asyncExampleLoadClickHandler('error')}>Click here to run example</button>
+                {
+                  checkAsyncExampleRequested('error')?
+                  (<Paragraph
+                    contentPromise={
+                      new Promise((r: any) => setTimeout(() => r(0), 3000))
+                    }
+                    onContentLoaded={
+                      (data: any) => data.n()
+                    }
+                    onContentLoadError={
+                      (error: Error) => error.message
+                    }
+                  />)
+                  :
+                  null
+                }
+                <PrismCode component="pre" className="language-jsx">
+{`<Paragraph
+  contentPromise={
+    new Promise((r: any) => setTimeout(() => r(0), 3000))
+  }
+  onContentLoaded={
+    (data: any) => data.n()
+  }
+  onContentLoadError={
+    (error: Error) => error.message
+  }
+/>`}
+                </PrismCode>
               </div>
             </div>
           </div>
