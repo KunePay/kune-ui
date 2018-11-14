@@ -9,6 +9,9 @@
 
 // Load environment configurations from `.env` file, if any
 require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
+const mime = require('mime');
 
 // HTTP server
 const express = require('express');
@@ -69,6 +72,16 @@ app.prepare()
 
   // Statically serve `assets` directory as `assets` route
   server.use('/assets', express.static('assets'));
+
+  // Serve favicon files as if from root
+  server.get(/^\/((android-|apple-|fav|ms-)icon|browserconfig\.xml|manifest\.json)/, (req, res) => {
+    const iconPath = path.join(__dirname, 'favicon', req.originalUrl);
+    const extension = path.extname(iconPath);
+    const iconFile = fs.readFileSync(iconPath);
+
+    res.type(mime.getType(extension));
+    res.send(iconFile);
+  });
 
   // Let Next.js handle any request not handled in any previous line
   server.get('*', (req, res) => {

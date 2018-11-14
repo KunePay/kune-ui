@@ -22,6 +22,7 @@ mv out docs
 
 # Copy assets to docs directory since docs it is treated as root by gh-pages 
 cp -r assets docs/assets
+cp favicon/* docs/
 
 # We use github pages, re-add CNAME file
 echo "kune-ui.org" > docs/CNAME
