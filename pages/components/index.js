@@ -11,6 +11,7 @@ import axios from 'axios';
 import Heading from 'kune-ui-components/element-components/Heading';
 import Paragraph from 'kune-ui-components/element-components/Paragraph';
 import Link from 'kune-ui-components/element-components/Link';
+import List, {ListItem} from 'kune-ui-components/element-components/List';
 
 type Props = any;
 
@@ -31,6 +32,8 @@ class ComponentsPage extends Component<Props, State> {
     alertCodeOpen: false,
     errorCodeOpen: false,
     successCodeOpen: false,
+    listAsyncExampleRequested: false,
+    listItemAsyncExampleRequested: false,
     basicAsyncExampleRequested: false,
     markupAsyncExampleRequested: false,
     transformationAsyncExampleRequested: false,
@@ -298,6 +301,103 @@ class ComponentsPage extends Component<Props, State> {
               <div>
                 <Heading level={3}>Paragraph</Heading>
                 <Paragraph>Description of this once it is implemented</Paragraph>
+              </div>
+              <div>
+                <Heading level={3}>List</Heading>
+                <Paragraph>Description of this once it is implemented</Paragraph>
+                <List>
+                  <ListItem>Unordered</ListItem>
+                  <ListItem>Test</ListItem>
+                </List>
+                <List type="unordered">
+                  <ListItem>Unordered</ListItem>
+                  <ListItem>Test</ListItem>
+                </List>
+                <List type="ul">
+                  <ListItem>Unordered</ListItem>
+                  <ListItem>Test</ListItem>
+                </List>
+                <List type="ordered">
+                  <ListItem>Ordered</ListItem>
+                  <ListItem>Test</ListItem>
+                </List>
+                <List type="ol">
+                  <ListItem>Ordered</ListItem>
+                  <ListItem>Test</ListItem>
+                </List>
+                <List type="description">
+                  <ListItem type="term">Description</ListItem>
+                  <ListItem type="description">Test</ListItem>
+                </List>
+                <List type="dl">
+                  <ListItem type="dt">Description</ListItem>
+                  <ListItem type="dd">Test</ListItem>
+                </List>
+                <Heading level={4}>Nested Lists</Heading>
+                <List>
+                  <ListItem>Nested Test</ListItem>
+                  <ListItem>
+                    <List type="ordered">
+                      <ListItem>Ordered</ListItem>
+                      <ListItem>
+                        <List type="description">
+                          <ListItem type="term">Description</ListItem>
+                          <ListItem type="description">Test</ListItem>
+                        </List>
+                      </ListItem>
+                    </List>
+                  </ListItem>
+                </List>
+                <Heading level={4}>Async Lists</Heading>
+                <button onClick={() => this.asyncExampleLoadClickHandler('list')}>Click here to run example</button>
+                {
+                  checkAsyncExampleRequested('list')?
+                  (<List
+                    contentPromise={
+                      axios.get('https://jsonplaceholder.typicode.com/users')
+                    }
+                    onContentLoaded={
+                      (res: any) => {
+                        const nameListItems: string[] = res.data.map(
+                          (p: any, index: number) => {
+                            return (
+                              <ListItem key={`asyncNameListItem-${index}`}>
+                                {p.name}
+                              </ListItem>
+                            );
+                          }
+                        );
+                        return nameListItems;
+                      }
+                    }
+                  >
+                    <ListItem>Loading...</ListItem>
+                  </List>)
+                  :
+                  null
+                }
+                <Heading level={4}>Async List Items</Heading>
+                <button onClick={() => this.asyncExampleLoadClickHandler('listItem')}>Click here to run example</button>
+                <List type="ordered">
+                  {
+                    [
+                      (<ListItem key="asyncListItem-0">This item is not asynchronous</ListItem>),
+                      checkAsyncExampleRequested('listItem')?
+                      (<ListItem
+                        key="asyncListItem-1"
+                        contentPromise={
+                          new Promise((r: any) => setTimeout(() => {
+                            r(
+                              <span><strong>This item</strong> took 3 seconds to load its content.</span>
+                            )
+                          }, 3000))
+                        }
+                      />)
+                      :
+                      <ListItem key="asyncListItem-1">Waiting for example to be run...</ListItem>
+                    ]
+                  }
+                </List>
               </div>
               <div>
                 <Heading level={3}>Link</Heading>
