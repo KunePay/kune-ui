@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rimraf dist && babel src -d dist",
     "dev": "rimraf dist && babel src -d dist -w",
-    "setup:dev": "yarn && yarn build && cp package.json dist/package.json && cd dist && yarn link && cd ../../../ && yarn link kune-ui-utils"
+    "setup:dev": "yarn && yarn build && cp package.json dist/package.json && cd dist && yarn link && cd ../../kune-ui-components && yarn link kune-ui-utils && cd ../../../ && yarn link kune-ui-utils"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0",
