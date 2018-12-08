@@ -1,0 +1,14 @@
+@import '../../colors';
+
+.image {
+  display: inline-block;
+}
+
+.image-placeholder {
+  display: inline-block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: $blue-grey-100;
+  border: 10px $blue-grey-200 solid;
+}

@@ -1,9 +1,23 @@
 @import '../variables';
 
+body, html {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   font-family: $body-font;
   color: $primary-foreground-color;
   background: $secondary-background-color;
+}
+
+body > div {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 .highlight-background {
