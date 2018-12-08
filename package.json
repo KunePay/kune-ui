@@ -33,7 +33,7 @@
   },
   "scripts": {
     "dev": "node server.js",
-    "setup:dev": "cd lib/kune-ui-utils && yarn setup:dev && cd ../kune-ui-theme-default && yarn setup:dev && cd ../kune-ui-hocs && yarn setup:dev && cd ../kune-ui-components && yarn setup:dev && cd ../kune-ui-redux && yarn setup:dev",
+    "setup:dev": "cd lib/kune-ui-utils && yarn setup:dev && cd ../kune-ui-theme-default && yarn setup:dev && cd ../kune-ui-hocs && yarn setup:dev && cd ../kune-ui-components && yarn setup:dev && cd ../kune-ui-redux && yarn setup:dev && echo 💫 Complete setup:dev",
     "build": "rimraf .next && next build",
     "export": "next export",
     "deploy": "./deploy.sh",
